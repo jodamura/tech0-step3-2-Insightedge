@@ -2,26 +2,87 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #0f2a3f;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    font-family: Arial, sans-serif;
+    background-color: #0C1A2B;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.plans-container {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    padding: 24px;
+}
+
+.plan {
+    background-color: #162A3D;
+    border-radius: 6px;
+    padding: 24px;
+    margin: 0 12px;
+    width: 300px;
+}
+
+.plan-title {
+    color: #8ca0b3;
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+.plan-price {
+    font-size: 32px;
+    margin-bottom: 24px;
+}
+
+.plan-features {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 24px;
+}
+
+.plan-features li {
+    padding: 8px 0;
+    border-bottom: 1px solid #3C5568;
+}
+
+.plan-features li:last-child {
+    border-bottom: none;
+}
+
+.signup-btn {
+    background-color: #0063E5;
+    color: white;
+    text-align: center;
+    padding: 12px 0;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 6px;
+    width: 100%;
+    box-sizing: border-box;
+}
+.bottom-btn {
+    background-color: #0063E5;
+    color: white;
+    text-align: center;
+    padding: 12px 0;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 6px;
+    width: 30%;
+    margin:0 auto;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    padding: 24px;
 }
