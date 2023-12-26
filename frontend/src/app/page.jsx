@@ -22,7 +22,7 @@ export default function Subber_c() {
           />
           <div>ログアウト</div>
         </header>
-        <LoadScript googleMapsApiKey='AIzaSyCkEJymj5KlooR0rH25NiXi2Vj5gl8L29g'>
+        <LoadScript googleMapsApiKey='googleMapsApiキー'>
         <GoogleMap
             mapContainerStyle={map_size}
             center={map_position}
