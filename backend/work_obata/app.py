@@ -1,6 +1,15 @@
-from flask import Flask, jsonify, request, abort
+from flask import Flask, jsonify, request, abort, url_for, render_template
+import requests
+import json
+import marshmallow as ma
+from flask_smorest import Api, Blueprint, abort
 
 app = Flask(__name__)
+api = Api(app)
+
+class PetSchema(ma.Schema):
+    id = ma.fields.Int(dump_only=True)
+    name = ma.fields.String()
 
 # サンプルのデータベース代わりにリストを使用
 tasks = [
@@ -15,6 +24,11 @@ tasks = [
         'done': False
     }
 ]
+
+# indexページの表示
+@app.route('/', methods=['GET'])
+def get_index():
+    return render_template('index.html')
 
 # タスク一覧を取得するエンドポイント
 @app.route('/tasks', methods=['GET'])
@@ -42,6 +56,22 @@ def create_task():
     }
     tasks.append(new_task)
     return jsonify({'task': new_task}), 201
+
+@app.route('/zipcode', methods=['GET'])
+def get_zipcode():
+    zipcode_url = 'https://zipcloud.ibsnet.co.jp/api/search?zipcode='
+    zipcode_number = '0010010'
+    try:
+        response = requests.get(zipcode_url + zipcode_number)
+
+        if response.status_code == 200:
+            response = json.loads(response.text)
+            place = response['results']
+            return jsonify({'address':place})
+        else:
+            return jsonify({'error':'Failed to zipcode'})
+    except requests.exceptions.RequestException as e:
+        abort(500, description='Failed to fetch data from API')
 
 if __name__ == '__main__':
     app.run(debug=True)
