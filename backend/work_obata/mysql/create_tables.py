@@ -35,25 +35,66 @@ cursor.execute("DROP TABLE IF EXISTS User;")
 print("Finished dropping table (if existed).")
 
 # Create table
-cursor.execute("CREATE TABLE User (UserID INT PRIMARY KEY, Username VARCHAR(255),Email VARCHAR(255),EncryptedPassword VARCHAR(255),SignupDate DATETIME,LastLogin DATETIME,PostCode VARCHAR(10),Address VARCHAR(255),LifeStyle VARCHAR(255));")
+cursor.execute("CREATE TABLE User (UserID INT AUTO_INCREMENT PRIMARY KEY, Username VARCHAR(255),Email VARCHAR(255),EncryptedPassword VARCHAR(255),SignupDate DATETIME, LastLogin DATETIME, PostCode VARCHAR(10),Address VARCHAR(255),LifeStyle VARCHAR(255));")
 print("Finished creating User table.")
 
-cursor.execute("CREATE TABLE Map (MapID INT PRIMARY KEY, MapPlace VARCHAR(255));")
+cursor.execute("CREATE TABLE Map (MapID INT AUTO_INCREMENT PRIMARY KEY, MapPlace VARCHAR(255));")
 print("Finished creating Map table.")
 
-cursor.execute("CREATE TABLE Mission (MissionID INT PRIMARY KEY, MissionName VARCHAR(255), MissionModel VARCHAR(255));")
+cursor.execute("CREATE TABLE Mission (MissionID INT AUTO_INCREMENT PRIMARY KEY, MissionName VARCHAR(255), MissionModel VARCHAR(255));")
 print("Finished creating Mission table.")
 
-cursor.execute("CREATE TABLE Characters (CharacterID INT PRIMARY KEY, CharacterName VARCHAR(255));")
-print("Finished creating Character table.")
+cursor.execute("CREATE TABLE Characters (CharacterID INT AUTO_INCREMENT PRIMARY KEY, CharacterName VARCHAR(255));")
+print("Finished creating Characters table.")
 
-cursor.execute("CREATE TABLE Child (ChildID INT PRIMARY KEY, UserID INT, ChildAge INT, ChildGender VARCHAR(10), ChildDetail TEXT, FOREIGN KEY (UserID) REFERENCES User(UserID));")
+cursor.execute("CREATE TABLE Child (ChildID INT AUTO_INCREMENT PRIMARY KEY, UserID INT, ChildAge INT, ChildGender VARCHAR(10), ChildDetail TEXT, FOREIGN KEY (UserID) REFERENCES User(UserID));")
 print("Finished creating Child table.")
 
-cursor.execute("CREATE TABLE GenMission (GenMissionID INT PRIMARY KEY, UserID INT, GenMissionRequest TEXT, GenMissionResponse TEXT, MissionID INT, MapID INT, ChildID INT, CharacterID INT, MissionTime DATETIME, Language VARCHAR(50),  \
+cursor.execute("CREATE TABLE GenMission (GenMissionID INT AUTO_INCREMENT PRIMARY KEY, UserID INT, GenMissionRequest TEXT, GenMissionResponse TEXT, MissionID INT, MapID INT, ChildID INT, CharacterID INT, MissionTime DATETIME, Language VARCHAR(50),  \
     FOREIGN KEY (MissionID) REFERENCES Mission(MissionID), FOREIGN KEY (MapID) REFERENCES Map(MapID), FOREIGN KEY (ChildID) REFERENCES Child(ChildID), FOREIGN KEY (CharacterID) REFERENCES Characters(CharacterID), FOREIGN KEY (UserID) REFERENCES User(UserID));")
 print("Finished creating GenMission table.")
 
+# Insert some data into User table
+cursor.execute("INSERT INTO User (Username, Email, EncryptedPassword, SignupDate, LastLogin, PostCode, Address, LifeStyle) VALUES\
+    ('john_doe', 'john.doe@example.com', 'hashed_password_123', '2023-01-01 12:00:00', '2023-01-02 15:30:00', '12345', '123 Main St, City, Country', 'Active'),\
+    ('jane_smith', 'jane.smith@example.com', 'hashed_password_456', '2023-01-02 09:45:00', '2023-01-03 18:20:00', '54321', '456 Oak St, City, Country', 'Fitness Enthusiast'),\
+    ('bob_jones', 'bob.jones@example.com', 'hashed_password_789', '2023-01-03 14:30:00', '2023-01-04 12:10:00', '67890', '789 Pine St, City, Country', 'Foodie');")
+print("Inserted",cursor.rowcount,"row(s) of data to User table.")
+
+cursor.execute("INSERT INTO Map (MapPlace) VALUES ('Shinagawa'), ('Shibuya');")
+print("Inserted",cursor.rowcount,"row(s) of data to Map table.")
+
+cursor.execute("INSERT INTO Mission (MissionName, MissionModel) VALUES ('Explore Ruins', 'ModelA'), ('Collect Artifacts', 'ModelB'), ('Rescue Team Members', 'ModelC'),('Navigate Maze', 'ModelA'),('Survival Challenge', 'ModelB');")
+print("Inserted",cursor.rowcount,"row(s) of data to Mission table.")
+
+cursor.execute("INSERT INTO Characters (CharacterName) VALUES ('ピカチュウ');")
+print("Inserted",cursor.rowcount,"row(s) of data to Characters table.")
+
+cursor.execute("INSERT INTO Child (UserID, ChildAge, ChildGender, ChildDetail) VALUES \
+    (1, 5, 'Male', 'Loves playing with toy cars.'),\
+    (2, 8, 'Female', 'Enjoys drawing and painting.');")
+print("Inserted",cursor.rowcount,"row(s) of data to Child table.")
+
+cursor.execute("INSERT INTO GenMission (UserID, GenMissionRequest, GenMissionResponse, MissionID, MapID, ChildID, CharacterID, MissionTime, Language) VALUES\
+    (1, 'Explore the ancient ruins and find the hidden artifact.', 'Mission completed successfully.', 1, 2, 1, 1, '2023-01-10 08:30:00', 'English'),\
+    (2, 'Rescue the team members trapped in the cave.', 'Team members rescued successfully.', 1, 1, 1, 1, '2023-01-15 12:45:00', 'Spanish'),\
+    (2, 'Navigate through the maze and reach the destination.', 'Mission completed successfully.', 1, 2, 2, 1, '2023-01-20 15:20:00', 'French');")
+print("Inserted",cursor.rowcount,"row(s) of data to GenMission table.")
+
+# Commit
+conn.commit()
+
+# Select
+cursor.execute("SELECT * FROM GenMission Where UserID = 1;")
+result = cursor.fetchall()
+print(result)
+
+
+# Cleanup
+conn.commit()
+cursor.close()
+conn.close()
+print("Done.")
 
 
 
