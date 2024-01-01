@@ -1,16 +1,24 @@
+import os
 import mysql.connector
 from mysql.connector import errorcode
+from dotenv import load_dotenv
 
+load_dotenv()
+# set env
+MYSQL_HOST = os.getenv('MYSQL_HOST')
+MYSQL_USERNAME = os.getenv('MYSQL_USERNAME')
+MYSQL_PASSWORD = os.getenv('MYSQL_PASSWORD')
+DATABASE_NAME = os.getenv('DATABASE_NAME')
+SSL_CA = os.getenv('SSL_CA')
 # Obtain connection string information from the portal
 
 config = {
-    'host':'tech0-5th-fumi-japaneast.mysql.database.azure.com',
-    'user':'obatasan',
-    'password':'tech0-techtech',
-    'database':'sobata',
-    'ssl_ca':'C:/Users/sobata/ssl/DigiCertGlobalRootCA.crt.pem'
+    'host':MYSQL_HOST,
+    'user':MYSQL_USERNAME,
+    'password':MYSQL_PASSWORD,
+    'database':DATABASE_NAME,
+    'ssl_ca':SSL_CA
 }
-
 # Construct connection string
 
 try:

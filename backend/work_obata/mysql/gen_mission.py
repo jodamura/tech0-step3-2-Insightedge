@@ -6,10 +6,10 @@ from dotenv import load_dotenv
 
 load_dotenv()
 # set env
-YOUR_MYSQL_HOST = os.getenv('MYSQL_HOST')
-YOUR_MYSQL_USERNAME = os.getenv('MYSQL_USERNAME')
-YOUR_MYSQL_PASSWORD = os.getenv('MYSQL_PASSWORD')
-YOUR_DATABASE_NAME = os.get_terminal_size('DATABASE_NAME')
+MYSQL_HOST = os.getenv('MYSQL_HOST')
+MYSQL_USERNAME = os.getenv('MYSQL_USERNAME')
+MYSQL_PASSWORD = os.getenv('MYSQL_PASSWORD')
+DATABASE_NAME = os.getenv('DATABASE_NAME')
 SSL_CA = os.getenv('SSL_CA')
 
 
@@ -29,7 +29,7 @@ def create_connection(host_name, user_name, user_password, db_name, ssl_ca):
 
 def save_story_to_db(connection, story):
     cursor = connection.cursor()
-    cursor.execute("CREATE TABLE IF NOT EXISTS stories (id INT AUTO_INCREMENT PRIMARY KEY, story_text TEXT)")
+    # cursor.execute("CREATE TABLE IF NOT EXISTS stories (id INT AUTO_INCREMENT PRIMARY KEY, story_text TEXT)")
     cursor.execute("INSERT INTO stories (story_text) VALUES (%s)", (story,))
     connection.commit()
 
@@ -55,13 +55,13 @@ def generate_story(prompt, max_tokens=200):
 
 def main():
     # MySQLデータベースの接続情報を設定
-    host = "YOUR_MYSQL_HOST"
-    user = "YOUR_MYSQL_USERNAME"
-    password = "YOUR_MYSQL_PASSWORD"
-    database = "YOUR_DATABASE_NAME"
+    host = "MYSQL_HOST"
+    user = "MYSQL_USERNAME"
+    password = "MYSQL_PASSWORD"
+    database = "DATABASE_NAME"
     ssl_ca = "SSL_CA"
 
-    connection = create_connection(host, user, password, database)
+    connection = create_connection(host, user, password, database, ssl_ca)
 
     # ユーザーに物語の参照または新規作成を選択させる
     choice = input("新しい物語を生成するには 'new' を、過去の物語を参照するにはそのIDを入力してください: ")
