@@ -56,12 +56,12 @@ print("Finished creating GenMission table.")
 
 # Insert some data into User table
 cursor.execute("INSERT INTO User (Username, Email, EncryptedPassword, SignupDate, LastLogin, PostCode, Address, LifeStyle) VALUES\
-    ('john_doe', 'john.doe@example.com', 'hashed_password_123', '2023-01-01 12:00:00', '2023-01-02 15:30:00', '12345', '123 Main St, City, Country', 'Active'),\
-    ('jane_smith', 'jane.smith@example.com', 'hashed_password_456', '2023-01-02 09:45:00', '2023-01-03 18:20:00', '54321', '456 Oak St, City, Country', 'Fitness Enthusiast'),\
-    ('bob_jones', 'bob.jones@example.com', 'hashed_password_789', '2023-01-03 14:30:00', '2023-01-04 12:10:00', '67890', '789 Pine St, City, Country', 'Foodie');")
+    ('田中太郎', 'tanaka@example.com', 'hashed_password_123', '2023-01-01 12:00:00', '2023-01-02 15:30:00', '12345', '東京都港区', 'アクティブ'),\
+    ('鈴木花子', 'suzuki@example.com', 'hashed_password_456', '2023-01-02 09:45:00', '2023-01-03 18:20:00', '54321', '大阪府大阪市', 'フィットネス愛好者'),\
+    ('佐藤健太', 'sato@example.com', 'hashed_password_789', '2023-01-03 14:30:00', '2023-01-04 12:10:00', '67890', '福岡県福岡市', 'フーディー');")
 print("Inserted",cursor.rowcount,"row(s) of data to User table.")
 
-cursor.execute("INSERT INTO Map (MapPlace) VALUES ('Shinagawa'), ('Shibuya');")
+cursor.execute("INSERT INTO Map (MapPlace) VALUES ('品川'), ('渋谷');")
 print("Inserted",cursor.rowcount,"row(s) of data to Map table.")
 
 cursor.execute("INSERT INTO Mission (MissionName, MissionModel) VALUES ('Explore Ruins', 'ModelA'), ('Collect Artifacts', 'ModelB'), ('Rescue Team Members', 'ModelC'),('Navigate Maze', 'ModelA'),('Survival Challenge', 'ModelB');")
@@ -71,8 +71,9 @@ cursor.execute("INSERT INTO Characters (CharacterName) VALUES ('ピカチュウ'
 print("Inserted",cursor.rowcount,"row(s) of data to Characters table.")
 
 cursor.execute("INSERT INTO Child (UserID, ChildAge, ChildGender, ChildDetail) VALUES \
-    (1, 5, 'Male', 'Loves playing with toy cars.'),\
-    (2, 8, 'Female', 'Enjoys drawing and painting.');")
+    (1, 5, '男の子', 'おもちゃの車で遊ぶのが好きです。'),\
+    (2, 8, '女の子', '絵を描くのが好きで、絵具で色鮮やかな絵を描きます。'),\
+    (3, 6, '男の子', '動物に興味があり、特に犬や猫が好きです。');")
 print("Inserted",cursor.rowcount,"row(s) of data to Child table.")
 
 cursor.execute("INSERT INTO GenMission (UserID, GenMissionRequest, GenMissionResponse, MissionID, MapID, ChildID, CharacterID, MissionTime, Language) VALUES\
