@@ -40,7 +40,7 @@ def get_index():
 # タスク一覧を取得するエンドポイント
 @app.route('/tasks', methods=['GET'])
 def get_tasks():
-    return jsonify({'tasks': tasks})
+    return jsonify([{'tasks': tasks}])
 
 # 特定のタスクを取得するエンドポイント
 @app.route('/tasks/<int:task_id>', methods=['GET'])
@@ -48,7 +48,7 @@ def get_task(task_id):
     task = next((task for task in tasks if task['id'] == task_id), None)
     if task is None:
         abort(404, description='Task not found')
-    return jsonify({'task': task})
+    return jsonify([{'task': task}])
 
 # タスクを追加するエンドポイント
 @app.route('/tasks', methods=['POST'])
@@ -69,7 +69,7 @@ def get_mission():
     result = gen_mission.generate_mission_module()
     # print(result)
     # print(type(result))
-    return jsonify({'genmission': result})
+    return jsonify([{'genmission': result}])
 
 @app.route('/genstory', methods=['GET'])
 def get_story():
@@ -81,7 +81,7 @@ def get_story():
     result = gen_story.generate_story_module(input_story_id, input_story_start)
     # print(result)
     # print(type(result))
-    return jsonify({'genstory': result})
+    return jsonify([{'genstory': result}])
 
 
 if __name__ == '__main__':
