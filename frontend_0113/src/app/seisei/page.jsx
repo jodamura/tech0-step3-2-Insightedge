@@ -33,7 +33,7 @@ export default function Home() {
             <div className='missionTitle'>ゆうきくんの自然探検隊</div>
           </div>
         </header>
-        <LoadScript googleMapsApiKey='AIzaSyCkEJymj5KlooR0rH25NiXi2Vj5gl8L29g'>
+        <LoadScript googleMapsApiKey='キー'>
         <GoogleMap
             mapContainerStyle={map_size}
             center={map_position}
