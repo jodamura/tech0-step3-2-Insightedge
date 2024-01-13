@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    background-color: red;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid whitesmoke;
+
+}
+
+.body {
+    font-family: Arial, sans-serif;
+    background-color: whitesmoke;
+    color: red;
+    margin: 0;
+    padding: 0;
+}
+
+.mapMain {
+    justify-content: center;
+    align-items: start;
+    padding: 24px;
+}
+
+.missionPlan {
+    background-color: white;
+    border-radius: 30px;
+    padding: 10px 10px 10px 10px;
+    margin: 0 12px;
+    height: 80px;
+    width: 480px;
+}
+
+.missionTitle {
+    color: red;
+    font-size: 40px;
+    font-family: Arial, sans-serif;
+    margin-bottom: 12px;
+}
+
+.plansContainer {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    padding: 24px;
+}
+
+.plan {
+    background-color: white;
+    border-radius: 30px;
+    padding: 24px;
+    margin: 0 12px;
+    height: 320px;
+    max-width: 300px;
+}
+
+.gazo {
+    background-color: white;
+    border-radius: 30px;
+    padding: 40px;
+    margin: 0 12px;
+    height: 320px;
+    max-width: 300px;
+}
+
+.storyContainer {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    padding: 24px;
+}
+
+.story {
+    background-color: white;
+    border-radius: 30px;
+    padding: 24px;
+    margin: 0 12px;
+    width: 630px;
+}
+
+
+
+.planTitle {
+    color: red;
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+.planPrice {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.planFeatures {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 24px;
+    font-size: 20px;
+}
+
+.planFeatures li {
+    padding: 8px 0;
+    color: black;
+    border-bottom: 1px solid #3C5568;
+}
+
+.planFeatures li:last-child {
+    border-bottom: none;
+}
+
+.missionStory {
+    color: black;
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.signupBtn {
+    background-color: #0063E5;
+    color: white;
+    text-align: center;
+    padding: 12px 0;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 30px;
+    width: 100%;
+    box-sizing: border-box;
+}
+.bottomBtn {
+    background-color: red;
+    color: white;
+    text-align: center;
+    padding: 12px 0;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 30px;
+    width: 30%;
+    margin:auto;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    padding: 24px;
+    font-family: Arial, sans-serif;
+    font-size: 30px;
+}

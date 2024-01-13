@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #F5F7FA;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+  }
+  .title {
+
+  }
+
+  .container {
+    max-width: 500px;
+    margin: auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+  }
+  .social-login {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+  .social-button {
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+    width: 48%;
+    cursor: pointer;
+  }
+  .social-button i {
+    margin-right: 8px;
+  }
+  .google {
+    background: #DB4437;
+  }
+  .apple {
+    background: #000;
+  }
+  .form-group {
+    margin-bottom: 15px;
+    font-size: 20px;
+  }
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #D1D5DB;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  .form-text {
+    display: block;
+    font-size: 12px;
+    color: #6B7280;
+    margin-top: 5px;
+  }
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .bottomBtn {
+    background-color: red;
+    color: white;
+    text-align: center;
+    padding: 12px 0;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 30px;
+    width: 50%;
+    margin:auto;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    padding: 16px;
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+}
+
+  .disclaimer {
+    font-size: 12px;
+    color: #6B7280;
+    margin-top: 20px;
+  }
