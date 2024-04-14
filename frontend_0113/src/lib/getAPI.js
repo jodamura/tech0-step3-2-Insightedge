@@ -7,7 +7,7 @@ export async function getPost(id) {
 
   // 全ての投稿を取得する関数
 export async function getPosts() {
-    const res = await fetch('https://tech0-5th-fumi-obata2-flask-japaneast.azurewebsites.net/genstory?story_id=new&story_start=%27%E6[…]92%E8%A6%8B%E3%81%AA%E3%81%8C%E3%82%89%27');
+    const res = await fetch('https://tech0-5th-fumi-obata2-flask-japaneast.azurewebsites.net/genstory?story_id=new&story_start=%27%E5%85%AC%E5%9C%92%E3%81%A7%27 ');
     const posts = await res.json();
     return posts;
 }

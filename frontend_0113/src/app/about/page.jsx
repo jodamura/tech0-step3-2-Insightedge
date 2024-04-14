@@ -1,12 +1,8 @@
 "use client"
 import Image from "next/image";
 import React from 'react';
-import { GoogleMap, LoadScript,MarkerF } from "@react-google-maps/api";
-//import styles from "../styles/Home.module.css";
-const map_size = {
-  width: "100%",
-  height: "500px"
-};
+import Link from 'next/link';
+
 export default function About() {
 
     return (
@@ -51,10 +47,12 @@ export default function About() {
 
         
         </div>
+        <Link href="/feedback">
         <div className='buttonContainer'>
           <a href="#" className='bottomBtn'>次のミッションへ</a>
           <a href="#" className='bottomBtn'>冒険終了</a>
         </div>
+        </Link>
       </div>
       </div>
     );
